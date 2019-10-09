@@ -33,10 +33,11 @@ try {
 if(isset($_SESSION['access_token'])){
     try {
         $fb->setDefaultAccessToken($_SESSION['access_token']);
-        $res =  $fb->get('/me?locale=en_US&fields=name,email');
+        $res =  $fb->get('/me?fields=email,birthday,location,locale,age_range,currency,first_name,last_name,name_format,gender');
         $user = $res->getGraphUser();
-        echo 'Hallo ',$user->getField('name');
+        echo 'Hallo ',$user;
     } catch (Exception $exc) {
         echo $exc->getTraceAsString();
     }
 }
+
