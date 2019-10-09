@@ -12,10 +12,12 @@
 
 <div class="container">
     <div class="jumbotron">
-        <?php
-            require './fb-init.php';
-        ?>
-        <a href="<?php echo $login_url;?>">Login With Facebook</a>
+        <?php require './fb-init.php'; ?>
+        <?php if(isset($_SESSION['access_token'])):?>
+            <a href="">Logout</a>
+        <?php else:?>
+            <a href="<?php echo $login_url;?>">Login With Facebook</a>
+        <?php endif;?>
     </div>   
 </div>
 
