@@ -25,7 +25,18 @@ try {
         header("Location:index.php");
     }
 
-} catch (\Throwable $th) {
-    //throw $th;
+} catch (Exception $exc) {
+    echo $exc->getTraceAsString();
 }
 
+// get users first name, email, last name
+if(isset($_SESSION['access_token'])){
+    try {
+        $fb->setDefaultAccessToken($_SESSION['access_token']);
+        $res =  $fb->get('/me?locale=en_US&fields=name,email');
+        $user = $res->getGraphUser();
+        echo 'Hallo ',$user->getField('name');
+    } catch (Exception $exc) {
+        echo $exc->getTraceAsString();
+    }
+}
