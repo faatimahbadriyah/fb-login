@@ -14,6 +14,10 @@
     <div class="jumbotron">
         <?php require './fb-init.php'; ?>
         <?php if(isset($_SESSION['access_token'])):?>
+            <?php echo $user; ?>
+            <br>
+            <?php echo 'Hallo ', $user['name']; ?>
+            <br>
             <a href="logout.php">Logout</a>
         <?php else:?>
             <a href="<?php echo $login_url;?>">Login With Facebook</a>
